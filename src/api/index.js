@@ -31,7 +31,7 @@ export const searchPhone = (klist)=>{
                     value: find ? find.value : '未知',
                 };
             })
-            data.sort((a,b)=>{ return a.price > b.price })
+            data.sort((a)=>{ if(a.value === 1) return -1;  return 0; })
 
             resolve(data);
         }catch (e) {
