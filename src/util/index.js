@@ -85,9 +85,9 @@ const arr = text.split('\n');
 const SHU_TYPE = {
     ['(吉)']: 1,
     ['(半吉)']: 2,
-    ['(凶)']: 3,
+    ['(下)']: 3,
 }
-const Yi = [];
+export const Yi = [];
 arr.forEach(it=>{
     const match1 = it.match(/\d+/i);
     const match2 = it.match(/(?<=\s)\(.*?\)/g);
@@ -99,4 +99,47 @@ arr.forEach(it=>{
     temp.index = Number(index);
     Yi.push(temp)
 })
-export default Yi;
+
+
+
+export const searchPhone = (klist) => {
+    const query = {
+        cnt: 1000,
+        page_no: 1,
+        numcategory: 0,
+        dis: 1,
+        st: 4,
+        lanmu: 0,
+        klist,
+    }
+    return new Promise(async (resolve, reject) => {
+            let uri = '';
+            Object.entries(query).forEach(it=>{
+                uri = uri + it.join('=') + '&'
+            })
+            fetch(`/io/5.asp?${uri}`).then(response => {
+                return response.text();
+            }).then(text => {
+                let data = text.substr(2);
+                data = data.split('|');
+                data = data.map(it => {
+                    const row = it.split(',');
+                    let sum = 0;
+                    for (let i of String(row[0])) {
+                        sum += Number(i);
+                    }
+                    const find = Yi.find(it => it.index === sum);
+                    return {
+                        phone: row[0],
+                        total: sum,
+                        price: Number(row[3]) + Number(row[4]),
+                        text: find ? find.type : '未知',
+                        value: find ? find.value : '未知',
+                    };
+                })
+                data.sort((a) => { if (a.value === 1) return -1; return 0; })
+
+                resolve(data);
+            })
+    })
+}

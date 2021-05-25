@@ -1,0 +1,216 @@
+.animation {
+  animation: twinkling 2.1s infinite ease-in-out;
+  animation-fill-mode: both;
+}
+
+@keyframes twinkling {
+  0% {
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    transform: scale(1.12);
+  }
+  100% {
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+    transform: scale(1);
+  }
+}
+i,
+em {
+  font-style: normal;
+}
+html {
+  box-sizing: border-box;
+  * {
+    box-sizing: inherit;
+  }
+}
+body {
+  color: #fff;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+}
+
+#app {
+  display: flex;
+  height: 100vh;
+  .left {
+    width: 25%;
+    padding: 10px;
+    background-color: #cc9318;
+
+    .mean {
+      color: #fff;
+      font-size: 14px;
+      padding: 5px 0;
+    }
+    .number {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+      span {
+        height: 2vw;
+        background: #45484d;
+        display: flex;
+        font-size: 14px;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+        position: relative;
+        &:hover {
+          opacity: 0.7;
+        }
+        &.up {
+          background: #b1191a;
+        }
+        &.center {
+          background: #fb83fa;
+        }
+        &.active {
+          z-index: 9;
+          &:after {
+            border: 3px solid #f8b500;
+            border-radius: 5px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            content: "";
+            display: block;
+            z-index: 999;
+          }
+        }
+      }
+    }
+
+    .compute {
+      margin-top: 20px;
+      line-height: 30px;
+      font-size: 14px;
+      display: flex;
+      input {
+        font-size: 16px;
+        display: block;
+        height: 32px;
+        padding: 5px;
+        margin-right: 20px;
+        background-color: #fff;
+        border-radius: 3px;
+        width: 150px;
+        font-weight: 300;
+        border: 1px solid #fff;
+      }
+    }
+    .buy {
+      padding-top: 10px;
+      display: grid;
+      grid-template-columns: 4fr 4fr;
+      span {
+        padding: 5px;
+        font-size: 14px;
+        color: #000;
+        position: relative;
+        label {
+          margin-right: 20px;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .right {
+    flex: 1;
+    min-width: 1%;
+    height: 100%;
+    display: flex;
+    background-color: #ddd;
+    flex-direction: column;
+  }
+}
+
+.filter {
+  display: flex;
+  line-height: 30px;
+  background-color: rgb(179, 123, 40);
+  padding: 10px 0 10px 15px;
+  font-size: 12px;
+  button {
+    margin-left: 4px;
+    width: 60px;
+    height: 26px;
+    margin-right: 20px;
+    border-radius: 3px;
+    background: cornflowerblue;
+    color: #fff;
+    border: none;
+  }
+  input {
+    width: 30px;
+    height: 26px;
+    font-size: 16px;
+    border: none;
+    background-color: #fff;
+    border-color: #fff;
+    text-align: center;
+    color: #000;
+    margin-left: 2px;
+    border-radius: 3px;
+    &:first-child {
+      margin-left: 10px;
+    }
+  }
+}
+
+.phone {
+  padding-left: 15px;
+  flex: 1;
+  min-height: 1%;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  span {
+    padding: 6px 5px;
+    width: 24%;
+    color: #222;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    &.up i {
+      color: red;
+      font-weight: bolder;
+    }
+    &.center i {
+      color: #fb83fa;
+    }
+    .down {
+      color: #222;
+    }
+    i {
+      width: 20px;
+      font-size: 12px;
+    }
+    label {
+      margin-right: 15px;
+      width: 110px;
+    }
+    em {
+      margin-right: 10px;
+      font-size: 10px;
+      color: #666;
+    }
+    small {
+      font-size: 12px;
+      color: #999;
+    }
+  }
+}

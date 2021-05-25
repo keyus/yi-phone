@@ -1,16 +1,3 @@
-# phone-test
+### 采集cd.haoma.com 数据
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
+使用前请先使用当前运行环境电脑，访问该网址，以防止服务器进行机器人检测而无法获取数据
