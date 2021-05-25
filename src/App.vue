@@ -24,12 +24,13 @@
     <div class="buy">
       <span
         v-for="it in BUY"
+        @click="onSee(it.phone)"
         :key="it.active"
         :class="{
           active: it.active,
         }"
       >
-        <label>{{ it.h }}</label
+        <label>{{ it.phone }}</label
         >{{ it.price }}
       </span>
     </div>
@@ -114,7 +115,7 @@ export default {
     };
     const getLevel = (value) => SHU_TYPE[value];
     const onToggle = (value) => (active.value = value);
-
+    const onSee = value => testNumber.value = value;
     return {
       Yi,
       BUY,
@@ -123,6 +124,7 @@ export default {
       phone,
       search,
       searchValue,
+      onSee,
       onSearch,
       getLevel,
       onToggle,

@@ -1,6 +1,6 @@
 const BUY = [
-    {h: 13608035070, price: 840, active: true},
-    {h: 13618030607, price: 400, active: false},
+    {phone: 13608028203, price: 650, active: true},
+    {phone: 13618021610, price: 650, active: false},
 ];
 
 export default BUY
